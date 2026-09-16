@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>A local-first AI stack for a radiologist — Alexander Yap</title>
+  <meta name="description" content="The honest numbers on running a 14B model at home: slower, private, auditable, and yours.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232dd4bf'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='38' font-weight='700' text-anchor='middle' fill='%230b1220'%3Ea%3C/text%3E%3C/svg%3E">
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">alex yap<span class="t">.</span><span class="brand-sub">radiologist ∕ builder</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../index.html#about">About</a>
+      <a href="../index.html#writing">Writing</a>
+        <a href="../blog.html">Blog</a>
+        <button class="theme-btn" type="button" aria-label="Toggle color theme">
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg>
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post-page container">
+      <header>
+        <p class="label"><span class="tag">local-ai</span></p>
+        <h1>A local-first AI stack for a radiologist</h1>
+        <p class="meta">By Alexander Yap · <time datetime="2026-04-21">21 Apr 2026</time></p>
+      </header>
+
+      <div class="prose">
+        <p>“Radiologist runs an AI stack at home” is either a clickbait article or it is this one, and I intend it to be this one. So: the actual stack, the honest numbers, and why a person who signs radiology reports makes the conservative choice.</p>
+        <h2>Why local, in three sentences</h2>
+        <p>First, data: patient data is a trust boundary, not a cost optimisation, and the only boundary that cannot be breached is the one where the data never left the building. Second, audit: I can read the code of my own agents and I know exactly where the weights came from. Third, and this is the one I keep returning to — the cloud is a subscription to someone else’s agent. Someone else’s priorities, someone else’s pricing, someone else’s right to change the model under you while you sleep.</p>
+        <h2>The stack</h2>
+<pre><code>hardware:    one workstation, 24 GB VRAM (a large Mac works too)
+inference:   llama.cpp via Ollama, 7–14B instruct models
+memory:      SQLite + sqlite-vec. Nothing fancier.
+agents:      plain Python, one file each, git for state
+interface:   CLI first, a messaging app second</code></pre>
+        <p>That is the whole diagram. There is no cloud tier, no managed vector database, no SSO. The “enterprise architecture” I was expected to draw in 2023 is now four lines, and I find that funny in a way that I will get over.</p>
+        <h2>The honest numbers</h2>
+        <p>A 14B model on 24 GB of VRAM gives me somewhere around 10–30 tokens per second depending on context length. That is not fast. It is private, auditable, and — after the hardware purchase — roughly free at the margin. Latency is a feature you design for once you stop pretending the model is instantaneous: batch work overnight, use small models for triage, save the big one for the two or three jobs a week that earn it.</p>
+        <p>Capability, also honestly: strong at summarisation and structure, serviceable at code, still embarrassingly bad at counting and at exact numbers. So it drafts and I check, with exactly the same standard I would apply to a junior registrar. It is a colleague with a particular skill profile, not an oracle.</p>
+        <h2>What “local-first” actually means</h2>
+        <p>It is not a technical position; it is an ownership question. Who runs the model, who sees the data, who is accountable when it is wrong? In medicine those three answers should be you. Everything else — the models, the frameworks, the hype cycle — is negotiable. Local-first is what remains when you stop negotiating.</p>
+      </div>
+
+      <aside class="seed-note">Seed content — this post is sample text written to demonstrate the template. Replace it with your own writing; keep the layout.</aside>
+      <a class="back" href="../blog.html">← All posts</a>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="colophon">© <span id="year">2026</span> Alexander Yap</p>
+      <nav class="footer-links" aria-label="Elsewhere">
+        <a href="https://instagram.com/agenticjourney" target="_blank" rel="me">Instagram</a>
+        <a href="https://www.linkedin.com/in/alexanderyaprad/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@agenticradiologist.io">hello@agenticradiologist.io</a>
+      </nav>
+      <p class="colophon">built locally · deployed on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The agent fleet: what I actually run on my own hardware — Alexander Yap</title>
+  <meta name="description" content="Five small agents, one Linux box, zero cloud. What they do, what broke, and why the no-patient-data rule is the design.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232dd4bf'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='38' font-weight='700' text-anchor='middle' fill='%230b1220'%3Ea%3C/text%3E%3C/svg%3E">
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">alex yap<span class="t">.</span><span class="brand-sub">radiologist ∕ builder</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../index.html#about">About</a>
+      <a href="../index.html#writing">Writing</a>
+        <a href="../blog.html">Blog</a>
+        <button class="theme-btn" type="button" aria-label="Toggle color theme">
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg>
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post-page container">
+      <header>
+        <p class="label"><span class="tag">agentic-ai</span></p>
+        <h1>The agent fleet: what I actually run on my own hardware</h1>
+        <p class="meta">By Alexander Yap · <time datetime="2026-06-08">8 Jun 2026</time></p>
+      </header>
+
+      <div class="prose">
+        <p>People ask what an “agentic radiologist” means in practice, usually with the expectation that the answer will match the Instagram handle. It doesn’t. Right now I run five small agents on one machine. That is the whole fleet. It is less dramatic than the brand, and considerably more useful.</p>
+        <h2>The five</h2>
+        <ul>
+          <li><strong>Inbox triage.</strong> Reads my email, sorts it, drafts replies where a reply is warranted, and produces a short morning digest. The drafts are never sent. I edit or discard. This one saves me the most time and has the fewest failures.</li>
+          <li><strong>Literature reader.</strong> Watches a fixed list of arXiv categories and a handful of PubMed queries every night, and produces a two-page summary on Sunday. “Notable because” is the field I care about; abstract concatenation is the failure I’ve had to weed out.</li>
+          <li><strong>Pipeline QA.</strong> Watches the logs of the DICOM-to-3D-printing pipeline in the lab and flags anomalies: geometry failures, calibration drift, print-job stalls. It is a monitoring system that happens to be an LLM, which is exactly the kind of boring job models are good at.</li>
+          <li><strong>Report sandbox.</strong> Practices drafting report structure on <em>synthetic data only</em>. Deliberately. No real patient, ever, at any stage. Its job is to keep its skills warm and measurable, not to touch clinical care.</li>
+          <li><strong>The digester.</strong> Once a week it reads what the other four did and writes a summary of the fleet. Agents reporting on agents sounds like a horror story until you notice it is just monitoring, and monitoring is what we already do to every piece of medical equipment.</li>
+        </ul>
+        <h2>The stack is prehistoric on purpose</h2>
+        <p>One Linux box, local models, plain Python, one file per agent, git for state. Memory is a directory of markdown files. There is no framework, no orchestration layer, no dashboard I needed to build because a framework made me. The entire fleet fits in one repository I could read in an afternoon, and I mean that as the primary selling point.</p>
+        <h2>What broke</h2>
+        <p>Three honest failures, and the fixes were all unglamorous. First, a loop: an agent called a tool, got a result, and called the same tool again with slightly different arguments, for an hour. Fix: a per-task budget on tool calls. Second, context rot: long-running summaries quietly drifted from the source material. Fix: shorter windows and re-grounding against the document each pass. Third, tone: models state things with the confidence of people who have never been wrong, and that reads as authority in a medical context. Fix: the output template demands a caveats line, and I review it.</p>
+        <h2>The boundary is the design</h2>
+        <p>The rule that none of this touches patient data is not a compliance afterthought; it is the load-bearing wall. Because it holds, everything else can be loose — loose file formats, loose scripts, my own sloppy naming. In medicine the interesting research question is not “can we build a better agent” but “which problems are safe to hand to software.” The fleet exists to keep my hands on that question.</p>
+        <p>None of this is special: a few hundred lines each, no launch, no demo video worth making. The fleet is boring on purpose. Boring is what you want at 2 a.m. — in the hospital and in the server rack.</p>
+      </div>
+
+      <aside class="seed-note">Seed content — this post is sample text written to demonstrate the template. Replace it with your own writing; keep the layout.</aside>
+      <a class="back" href="../blog.html">← All posts</a>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="colophon">© <span id="year">2026</span> Alexander Yap</p>
+      <nav class="footer-links" aria-label="Elsewhere">
+        <a href="https://instagram.com/agenticjourney" target="_blank" rel="me">Instagram</a>
+        <a href="https://www.linkedin.com/in/alexanderyaprad/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@agenticradiologist.io">hello@agenticradiologist.io</a>
+      </nav>
+      <p class="colophon">built locally · deployed on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>

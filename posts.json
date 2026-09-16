@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Bone is a database: field notes from a decade of DECT",
+    "date": "2026-07-12",
+    "excerpt": "Dual-energy CT doesn't hand you an image — it hands you a query result. A decade of DECT in five honest lessons.",
+    "tag": "dect",
+    "url": "posts/dect-bone-is-a-database.html"
+  },
+  {
+    "title": "The agent fleet: what I actually run on my own hardware",
+    "date": "2026-06-08",
+    "excerpt": "Five small agents, one Linux box, zero cloud. What they do, what broke, and why the no-patient-data rule is the design.",
+    "tag": "agentic-ai",
+    "url": "posts/the-agent-fleet.html"
+  },
+  {
+    "title": "A local-first AI stack for a radiologist",
+    "date": "2026-04-21",
+    "excerpt": "The honest numbers on running a 14B model at home: slower, private, auditable, and yours. The cloud is a subscription to someone else's agent.",
+    "tag": "local-ai",
+    "url": "posts/local-first-stack.html"
+  }
+]

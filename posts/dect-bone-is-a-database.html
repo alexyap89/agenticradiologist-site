@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bone is a database: field notes from a decade of DECT — Alexander Yap</title>
+  <meta name="description" content="Dual-energy CT doesn't hand you an image — it hands you a query result. A decade of DECT in five honest lessons.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232dd4bf'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='38' font-weight='700' text-anchor='middle' fill='%230b1220'%3Ea%3C/text%3E%3C/svg%3E">
+  <script>
+    (function () {
+      var t = localStorage.getItem("theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="../index.html">alex yap<span class="t">.</span><span class="brand-sub">radiologist ∕ builder</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="../index.html#about">About</a>
+      <a href="../index.html#writing">Writing</a>
+        <a href="../blog.html">Blog</a>
+        <button class="theme-btn" type="button" aria-label="Toggle color theme">
+          <svg class="icon-sun" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.9 4.9l1.4 1.4m11.4 11.4 1.4 1.4M2 12h2m16 0h2M4.9 19.1l1.4-1.4m11.4-11.4 1.4-1.4"/></svg>
+          <svg class="icon-moon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <article class="post-page container">
+      <header>
+        <p class="label"><span class="tag">dect</span></p>
+        <h1>Bone is a database: field notes from a decade of DECT</h1>
+        <p class="meta">By Alexander Yap · <time datetime="2026-07-12">12 Jul 2026</time></p>
+      </header>
+
+      <div class="prose">
+        <p>A dual-energy CT scanner is a machine that answers a question you had to think about first. That inversion is the whole lesson, and it took me a decade to learn it.</p>
+        <p>Here is the part of the physics that matters. We acquire two scans of the same patient at two different tube voltages. Every material attenuates those two beams in its own characteristic way, which means the scanner can decompose each voxel into basis materials — for our purposes, iodine and effective atomic number, one number per voxel. I grew up reading grayscale: a number of no particular kind, interpreted by context. DECT hands you a <em>query result</em>. Iodine concentration is a column you can select for, threshold, and plot.</p>
+        <p>The mental model that stuck: <strong>bone is a database.</strong> Each voxel is a row. Density, mineralisation, vascularity — columns you used to infer from context and guess at — are now selectable. In the 3D Imaging Lab we work with surgeons on pre-operative planning, and the change is not dramatic in the way the vendor slide suggests. It is quiet: the scan stops being an image and starts being a measurement we can put in the operative note. “Bone quality in the planned screw trajectory is low” is a sentence that used to require an essay of caveats. Now it requires a map.</p>
+        <h2>Where the hype runs out</h2>
+        <p>DECT is sold to clinicians as a miracle, and clinicians buy it because the demos are good. The demos are good because they show the easy 80%. The last 20% is where practice lives:</p>
+        <ul>
+          <li><strong>Precision is not accuracy.</strong> A map that looks smooth is not a map that is right. Cross-vendor calibration is a swamp, and the number on the colour scale means less than the pattern underneath it.</li>
+          <li><strong>“Low bone quality” is a spectrum, not a binary.</strong> Every threshold you pick is a clinical decision wearing a lab coat. Say so out loud.</li>
+          <li><strong>Noise floor matters when you are placing screws.</strong> The engineering question is not “can we produce a number” but “how much should we trust this number at this patient, this dose, this body habitus”.</li>
+        </ul>
+        <p>Working with engineers on biomedical imaging taught me the vocabulary for all of this. They call it uncertainty quantification. We just call it not being wrong in front of a surgeon.</p>
+        <h2>The transfer to AI</h2>
+        <p>The reason this post exists is the transfer. I keep reapplying the same move to AI systems: stop admiring the output and start writing the query. What is the unit? What is the column? What is the noise floor? What is the honest threshold, and who owns it? An imaging AI that can’t answer those four questions is a demo. One that can is a measurement.</p>
+        <p>DECT taught me that the future of the scan is not “smarter pictures.” It is structure — pixels you can question. I increasingly suspect the future of medical AI is the same: not smarter captions, but systems where the evidence is queryable, the uncertainty is stated, and the person in the room owns the threshold.</p>
+        <p>Stop admiring the image. Start writing the query.</p>
+      </div>
+
+      <aside class="seed-note">Seed content — this post is sample text written to demonstrate the template. Replace it with your own writing; keep the layout.</aside>
+      <a class="back" href="../blog.html">← All posts</a>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="colophon">© <span id="year">2026</span> Alexander Yap</p>
+      <nav class="footer-links" aria-label="Elsewhere">
+        <a href="https://instagram.com/agenticjourney" target="_blank" rel="me">Instagram</a>
+        <a href="https://www.linkedin.com/in/alexanderyaprad/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:hello@agenticradiologist.io">hello@agenticradiologist.io</a>
+      </nav>
+      <p class="colophon">built locally · deployed on GitHub Pages</p>
+    </div>
+  </footer>
+
+  <script src="../assets/script.js"></script>
+</body>
+</html>
