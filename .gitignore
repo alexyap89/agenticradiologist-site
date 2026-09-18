@@ -8,3 +8,4 @@ assets/*.jpg
 # Clinical images: not for public distribution. Local only.
 assets/img/chest-film*
 assets/img/foot-film*
+.netlify/
