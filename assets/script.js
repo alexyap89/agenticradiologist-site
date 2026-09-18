@@ -1,4 +1,4 @@
-/* agenticradiologist.io — theme, scroll reveal, posts, newsletter stub */
+/* agenticradiologist — theme, scroll reveal, posts, newsletter stub */
 (function () {
   "use strict";
 
@@ -68,7 +68,7 @@
   }
 
   /* Embedded copy so the site still renders when fetch is blocked
-     (e.g. opening via file://). On GitHub Pages, fetch() wins and picks up
+     (e.g. opening via file://). On Netlify, fetch() wins and picks up
      any posts you add to posts.json. Keep this in sync-ish with posts.json. */
   var FALLBACK_POSTS = [
     {
@@ -166,9 +166,9 @@
           var res = await fetch(form.action, { method: "POST", body: fd, headers: { Accept: "application/json" } });
           msg.textContent = res.ok
             ? "✓ Subscribed. Welcome aboard — see you in your inbox."
-            : "Something went wrong on the server side. Please try again, or email hello@agenticradiologist.io.";
+            : "Something went wrong on the server side. Please try again, or email alexyap@gmail.com.";
         } catch (err) {
-          msg.textContent = "Network error — please try again, or email hello@agenticradiologist.io.";
+          msg.textContent = "Network error — please try again, or email alexyap@gmail.com.";
         }
       }
       btn2.disabled = false;

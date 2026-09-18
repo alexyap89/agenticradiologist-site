@@ -1,7 +1,7 @@
 # The Agentic Radiologist — redesign specification
 
 **Date:** 2026-09-16
-**Site:** `agenticradiologist.io` (GitHub Pages, static, `CNAME`)
+**Site:** `agenticradiologist.netlify.app` (Netlify, static, no build step)
 **Baseline commit:** `99e50c2` — current live site, preserved as rollback
 **Status:** awaiting review
 
@@ -9,7 +9,7 @@
 
 ## 1. Purpose
 
-Rebuild `agenticradiologist.io` as **The Agentic Radiologist** — a clinician's
+Rebuild the personal site as **The Agentic Radiologist** — a clinician's
 first-person resource for AI literacy in medicine.
 
 The site is no longer a personal portfolio about "two careers". It is a
@@ -273,7 +273,7 @@ corporate-vector style, incompatible with the console aesthetic, 300 KB+ flat PN
 ## 11. Technical constraints
 
 - Plain HTML + CSS + vanilla JS. **No build step, no dependencies, no framework.**
-- Static deploy to GitHub Pages via `CNAME` (`agenticradiologist.io`).
+- Static deploy to Netlify (`agenticradiologist.netlify.app`).
 - New local git repo exists at baseline `99e50c2`. **Deployment remote is not yet
   configured** — must be added before publish.
 - `posts.json` continues to drive both post lists; `script.js` `FALLBACK_POSTS`
@@ -325,7 +325,7 @@ corporate-vector style, incompatible with the console aesthetic, 300 KB+ flat PN
 4. **`startling-biscuit-6d03a5`** — duplicate of `primemri` on a default subdomain.
 5. Confirm the intended framing of the box exercise is "the kind of output these
    tools produce", not the author's own model.
-6. Deployment remote for GitHub Pages.
+6. ~~Deployment remote for GitHub Pages.~~ Resolved: Netlify (`agenticradiologist`).
 7. Favicon mark: K-edge versus reticle, decided by a 16 px test.
 
 ---
@@ -346,6 +346,6 @@ corporate-vector style, incompatible with the console aesthetic, 300 KB+ flat PN
 ## 15. Deployment
 
 1. Add the GitHub remote to the new local repo.
-2. Deploy `main` → GitHub Pages; `CNAME` already present.
-3. Verify HTTPS and the apex domain resolve.
+2. Deploy `main` → Netlify (`agenticradiologist.netlify.app`).
+3. Verify HTTPS resolves.
 4. Keep baseline `99e50c2` as the rollback.
