@@ -15,6 +15,7 @@ I read scans for a living: musculoskeletal and body imaging, dual-energy CT, and
 | **[DECT × BME](https://dectbme.netlify.app)** | Reading bone marrow oedema with dual-energy CT — the pitfalls, and what spectral imaging actually changes about the read |
 | **[Dixon L-spine](https://dixonlspine.netlify.app)** | A shorter lumbar spine MRI: one Dixon sequence standing in for several conventional ones, to free scanner time without losing what matters |
 | **[Digital First 3D Lab](https://digitalfirst3dlab.netlify.app)** | Photorealistic models and surgical planning for complex cases — digital-first, before anything gets printed |
+| **[pRIMed-MRI](https://primemri.netlify.app)** | Patient preparation for abdominal MRI — an interactive 3D scanner room, a 360° walkthrough, guided breath-hold practice and real 1.5 T scanner audio. Runs on desktop and phone with no headset. One of my department's first PREM-based projects |
 | **[RadArt](https://radart.netlify.app)** | Augmented reality for imaging review and surgical planning |
 | **[RadRoster](https://radroster.netlify.app)** | Radiology roster and workflow tooling — born from a spreadsheet that needed to stop being a spreadsheet |
 
