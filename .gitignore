@@ -4,3 +4,7 @@
 # Source photographs (phone exports, timestamped names). Originals stay local;
 # the optimised derivatives in assets/img/ are the ones the site references.
 assets/*.jpg
+
+# Clinical images: not for public distribution. Local only.
+assets/img/chest-film*
+assets/img/foot-film*
