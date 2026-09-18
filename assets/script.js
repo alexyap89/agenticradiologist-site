@@ -166,9 +166,9 @@
           var res = await fetch(form.action, { method: "POST", body: fd, headers: { Accept: "application/json" } });
           msg.textContent = res.ok
             ? "✓ Subscribed. Welcome aboard — see you in your inbox."
-            : "Something went wrong on the server side. Please try again, or email alexyap@gmail.com.";
+            : "Something went wrong on the server side. Please try again later.";
         } catch (err) {
-          msg.textContent = "Network error — please try again, or email alexyap@gmail.com.";
+          msg.textContent = "Network error — please try again later.";
         }
       }
       btn2.disabled = false;
